@@ -15,11 +15,12 @@ closure over the name variable. Invoke outer saving the return value into
 another variable called 'inner'. */
 
 // Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
 
 //Code Here
-
+inner();
 
 
 
@@ -48,7 +49,9 @@ Create a makeCall function that when invoked logs 'Calling Jake at 435-215-9248'
 in your console. */
 
   //Code Here
-
+function makeCall(){
+  console.log('Calling Jake at 435-215-9248');
+}
 
 
 
@@ -68,12 +71,20 @@ properly. */
 
 //Code Here
 
+function makeCounter(){
+  var counter = 0;
+  return function(){
+    counter++;
+    return counter;
+  }
+}
+
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 
 
@@ -97,7 +108,6 @@ the module pattern to achieve this. */
 
 function counterFactory(value) {
 
-  // Code here.
 
 
   return {
