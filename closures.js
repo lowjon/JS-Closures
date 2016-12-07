@@ -192,12 +192,16 @@ var module = (function() {
 
   return {
     // Code here.
+    publicMethod: function(){
+      return privateMethod();
+    }
+
   };
 
 })();
 
 // Uncomment this after you create your public method
-//   module.publicMethod();
+  module.publicMethod();
 
 
 
@@ -220,13 +224,13 @@ then 3, etc). Run this code in your console to see what the output is. */
 // To make this code work you will need to create a new scope for every iteration.
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
+    newScope(i);
   }
 
-  function newScope(i) {
-    console.log(i)
+  function newScope(val) {
+    setTimeout(function() {
+      console.log(val);
+    }, val * 1000)
   }
 }
 timeOutCounter();
@@ -240,8 +244,16 @@ timeOutCounter();
 	#PROBLEM-08
 \******************************************************************************/
 
-var funcArray = [];
+// *** this works too ¯\_(ツ)_/¯****  var funcArray = [function(){return 0;}, function(){return 1;},function(){return 2;},function(){return 3;},function(){return 4;},function(){return 5;}];
 
+var funcArray = [];
+for (i=0; i<=5; i++){
+  newItem(i);
+}
+function newItem(val){
+  funcArray.push(function(){return val;});
+}
+// console.log(funcArray);
 /*
   Make the following code work
 
